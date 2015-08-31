@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HeartProject</string>
+    <string name="title_activity_maps">Heart Project</string>
+
+    <string name="backend_url">http://h.stipakov.fi</string>
+
+    <string name="preparing_map">Preparing map...</string>
+    <string name="acquiring_location">Acquiring location...</string>
+    <string name="fetching_places">Fetching places...</string>
+    <string name="ready">Ready!</string>
+
+    <string name="fetching_places_error">Cannot fetch places, try later</string>
+</resources>
