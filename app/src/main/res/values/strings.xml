@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name">HeartProject</string>
-    <string name="title_activity_maps">Heart Project</string>
+    <string name="app_name" translatable="false">HeartProject</string>
+    <string name="title_activity_maps" translatable="false">Heart Project</string>
 
-    <string name="backend_url">http://h.stipakov.fi</string>
+    <string name="backend_url" translatable="false">http://h.stipakov.fi</string>
 
     <string name="preparing_map">Preparing map...</string>
     <string name="acquiring_location">Acquiring location...</string>
+    <string name="location_not_available">Location is not available. Distance won\'t be shown.</string>
     <string name="fetching_places">Fetching places...</string>
     <string name="ready">Ready!</string>
 

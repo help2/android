@@ -217,6 +217,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 place.website = p.getString("website");
                 place.dist = p.getDouble("distance");
 
+                if (_loc == null) {
+                    place.dist = 0;
+                }
+
                 _places.add(place);
             }
         } catch (JSONException e) {
@@ -300,7 +304,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                             _toast.cancel();
                             _toast = Toast.makeText(MapsActivity.this,
-                                    getString(R.string.ready), Toast.LENGTH_SHORT);
+                                    _loc != null ? getString(R.string.ready) :
+                                            getString(R.string.location_not_available), Toast.LENGTH_SHORT);
                             _toast.show();
                         }
                     }
@@ -341,12 +346,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         String name = p.name;
-        if (p.dist < 100) {
-            name += " (" + p.dist + "m)";
-        } else if (p.dist >= 100 && p.dist <= 1000) {
-            name += " (" + (int)(p.dist / 100) + "00m)";
-        } else {
-            name += String.format(" (%.1f km)", p.dist / 1000.);
+        if (p.dist != 0) {
+            if (p.dist < 100) {
+                name += " (" + p.dist + "m)";
+            } else if (p.dist >= 100 && p.dist <= 1000) {
+                name += " (" + (int) (p.dist / 100) + "00m)";
+            } else {
+                name += String.format(" (%.1f km)", p.dist / 1000.);
+            }
         }
 
         DialogFragment dialog = PlaceDialogFragment.newInstance(name, TextUtils.join(", ", addr),

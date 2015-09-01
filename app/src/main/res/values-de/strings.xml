@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HeartProject</string>
+    <string name="acquiring_location">Suche Standort...</string>
+    <string name="fetching_places">Suche Sammelstellen...</string>
+    <string name="ready">Fertig!</string>
+    <string name="fetching_places_error">Es konnten keine Sammelstellen gefunden werden, bitte versuche es später erneut!</string>
+    <string name="location_not_available">Standort ist nicht verfügbar. Entfernung kann nicht angezeigt werden.</string>
+</resources>
