@@ -80,40 +80,13 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     public boolean onMarkerClick(Marker marker) {
         Place p = _markerToPlace.get(marker);
 
-        List<String> addr = new LinkedList<>();
-        addr.add(p.street);
-        if (!p.zipcode.isEmpty()) {
-            addr.add(p.zipcode);
-        }
-        addr.add(p.city);
-
-        List<String> addr2 = new LinkedList<>();
-        if (!p.person.isEmpty()) {
-            addr2.add(p.person);
-        }
-        if (!p.phone.isEmpty()) {
-            addr2.add(String.format("<a href=\"tel:%s\">%s</a>", p.phone, p.phone));
-        }
-        if (!p.hours.isEmpty()) {
-            addr2.add(p.hours);
-        }
-        if (!p.website.isEmpty()) {
-            addr2.add(String.format("<a href=\"%s\">%s</a>", p.website, p.website));
-        }
-
         String name = p.name;
-        if (p.dist != 0) {
-            if (p.dist < 100) {
-                name += " (" + p.dist + "m)";
-            } else if (p.dist >= 100 && p.dist <= 1000) {
-                name += " (" + (int) (p.dist / 100) + "00m)";
-            } else {
-                name += String.format(" (%.1f km)", p.dist / 1000.);
-            }
+        if (!p.distStr.isEmpty()) {
+            name += " (" + Place.getDistanceStr(p.dist) + ")";
         }
 
-        DialogFragment dialog = PlaceDialogFragment.newInstance(name, TextUtils.join(", ", addr),
-                TextUtils.join(", ", addr2), TextUtils.join(", ", p.items));
+        DialogFragment dialog = PlaceDialogFragment.newInstance(name, p.addr1, p.addr2,
+                TextUtils.join(", ", p.items));
         dialog.show(getFragmentManager(), "place");
 
         return true;

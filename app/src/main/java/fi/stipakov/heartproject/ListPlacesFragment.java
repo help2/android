@@ -1,17 +1,21 @@
 package fi.stipakov.heartproject;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.List;
+import java.util.Locale;
 
-public class ListPlacesFragment extends ListFragment {
+public class ListPlacesFragment extends ListFragment implements AdapterView.OnItemClickListener {
     private LayoutInflater _inf;
 
     @Override
@@ -38,13 +42,20 @@ public class ListPlacesFragment extends ListFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ListView lv = getListView();
-        View header = _inf.inflate(R.layout.places_list_header, lv, false);
-        lv.addHeaderView(header, null, false);
+        getListView().setOnItemClickListener(this);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Place p = (Place) getListAdapter().getItem(position);
+
+        String uri = String.format(Locale.ENGLISH, "geo:0,0?q=%s", p.addr1);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        startActivity(intent);
     }
 }

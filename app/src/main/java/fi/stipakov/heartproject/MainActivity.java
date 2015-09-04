@@ -3,9 +3,7 @@ package fi.stipakov.heartproject;
 import android.location.Location;
 import android.support.v4.app.*;
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.View;
-import android.widget.ImageView;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -153,6 +151,32 @@ public class MainActivity extends FragmentActivity implements
                 if (_loc == null) {
                     place.dist = 0;
                 }
+
+                place.distStr = Place.getDistanceStr(place.dist);
+
+                List<String> addr1 = new LinkedList<>();
+                addr1.add(place.street);
+                if (!place.zipcode.isEmpty()) {
+                    addr1.add(place.zipcode);
+                }
+                addr1.add(place.city);
+                place.addr1 = TextUtils.join(", ", addr1);
+
+                List<String> addr2 = new LinkedList<>();
+                if (!place.person.isEmpty()) {
+                    addr2.add(place.person);
+                }
+                if (!place.phone.isEmpty()) {
+                    addr2.add(String.format("<a href=\"tel:%s\">%s</a>", place.phone, place.phone));
+                }
+                if (!place.hours.isEmpty()) {
+                    addr2.add(place.hours);
+                }
+                if (!place.website.isEmpty()) {
+                    addr2.add(String.format("<a href=\"%s\">%s</a>", place.website, place.website));
+                }
+
+                place.addr2 = TextUtils.join(", ", addr2);
 
                 _places.add(place);
             }

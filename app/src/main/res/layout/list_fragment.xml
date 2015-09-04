@@ -23,12 +23,20 @@
         android:layout_height="match_parent" >
 
         <TextView
+            android:text="@string/places_you_can_help"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal|center_vertical"
+            xmlns:android="http://schemas.android.com/apk/res/android"></TextView>
+
+        <TextView
             android:id="@+id/empty_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center" />
 
         <ListView
+            android:layout_marginTop="30dp"
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
