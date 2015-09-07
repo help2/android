@@ -1,4 +1,4 @@
-package fi.stipakov.heartproject;
+package com.helphelp2.android;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

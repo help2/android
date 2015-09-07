@@ -1,4 +1,5 @@
-package fi.stipakov.heartproject;
+package com.helphelp2.android;
+
 
 /**
  * Created by stipa on 3.9.15.

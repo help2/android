@@ -1,4 +1,4 @@
-package fi.stipakov.heartproject;
+package com.helphelp2.android;
 
 import android.location.Location;
 import android.support.v4.app.*;
@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import java.util.LinkedList;
 import java.util.List;
+
 
 public class MainActivity extends FragmentActivity implements
         GoogleApiClient.ConnectionCallbacks,

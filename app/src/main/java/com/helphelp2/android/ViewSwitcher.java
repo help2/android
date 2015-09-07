@@ -1,4 +1,4 @@
-package fi.stipakov.heartproject;
+package com.helphelp2.android;
 
 import android.animation.Animator;
 import android.app.Activity;

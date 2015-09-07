@@ -1,4 +1,4 @@
-package fi.stipakov.heartproject;
+package com.helphelp2.android;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -20,7 +20,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 /**

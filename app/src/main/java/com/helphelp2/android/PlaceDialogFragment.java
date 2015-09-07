@@ -1,4 +1,4 @@
-package fi.stipakov.heartproject;
+package com.helphelp2.android;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,10 +9,10 @@ import android.support.v4.app.DialogFragment;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Locale;
+
 
 /**
  * Created by stipa on 2.9.15.
