@@ -5,5 +5,5 @@
     <string name="ready">Fertig!</string>
     <string name="fetching_places_error">Es konnten keine Sammelstellen gefunden werden, bitte versuche es später erneut!</string>
     <string name="location_not_available">Standort ist nicht verfügbar. Entfernung kann nicht angezeigt werden.</string>
-    <string name="places_you_can_help">Hier sind die Stellen in deiner Nähe, wo du helfen kannst:</string>
+    <string name="places_you_can_help">Hier kannst Du Deine Spenden abgeben:</string>
 </resources>
