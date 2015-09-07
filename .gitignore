@@ -15,3 +15,5 @@
 app/app.iml
 
 app/app-release.apk
+
+.idea/misc.xml
