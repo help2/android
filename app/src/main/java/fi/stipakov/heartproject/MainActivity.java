@@ -61,6 +61,8 @@ public class MainActivity extends FragmentActivity implements
     protected void onDestroy() {
         super.onDestroy();
 
+        _viewSwitcher.onActivityDestroyed();
+
         _dataFrag.setData(_places);
         _dataFrag.setCameraPosition(_cameraPos);
     }
@@ -108,7 +110,7 @@ public class MainActivity extends FragmentActivity implements
                 } else {
                     transaction.replace(R.id.fragment_container, _mapFragment);
                 }
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
             }
         });
 
@@ -216,6 +218,8 @@ public class MainActivity extends FragmentActivity implements
                         if (_mapFragment.isVisible()) {
                             _mapFragment.placePins(_places, true);
                         }
+
+                        _viewSwitcher.playInitialAnimation(findViewById(R.id.heart_image));
                     }
                 }, new Response.ErrorListener() {
                     @Override
