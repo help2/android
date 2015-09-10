@@ -85,7 +85,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         }
 
         DialogFragment dialog = PlaceDialogFragment.newInstance(name, p.addr1, p.addr2,
-                TextUtils.join(", ", p.items));
+                TextUtils.join(", ", p.items), p.helpers);
         dialog.show(getFragmentManager(), "place");
 
         return true;

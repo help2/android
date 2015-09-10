@@ -21,6 +21,7 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
         private TextView addr1;
         private TextView addr2;
         private TextView items;
+        private TextView helpers;
     }
 
     public PlacesAdapter(Context context, Place[] values) {
@@ -40,6 +41,7 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
             holder.addr1 = (TextView) convertView.findViewById(R.id.list_address1);
             holder.addr2 = (TextView) convertView.findViewById(R.id.list_address2);
             holder.items = (TextView) convertView.findViewById(R.id.list_items);
+            holder.helpers = (TextView) convertView.findViewById(R.id.list_helpers);
 
             convertView.setTag(holder);
         }
@@ -74,6 +76,12 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
             holder.items.setVisibility(View.GONE);
         }
 
+        if (!p.helpers.isEmpty()) {
+            holder.helpers.setVisibility(View.VISIBLE);
+            holder.helpers.setText(p.helpers);
+        } else {
+            holder.helpers.setVisibility(View.GONE);
+        }
 
         return convertView;
     }

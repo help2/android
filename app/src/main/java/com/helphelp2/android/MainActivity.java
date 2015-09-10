@@ -151,6 +151,8 @@ public class MainActivity extends FragmentActivity implements
                 place.website = p.getString("website");
                 place.dist = p.getDouble("distance");
 
+                place.helpers = p.getBoolean("helpers") ? getString(R.string.need_helpers) : "";
+
                 if (_loc == null) {
                     place.dist = 0;
                 }

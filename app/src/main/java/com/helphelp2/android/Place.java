@@ -23,6 +23,8 @@ public class Place {
     String addr1;
     String addr2;
 
+    String helpers;
+
     static String getDistanceStr(double dist) {
         String res = "";
 
