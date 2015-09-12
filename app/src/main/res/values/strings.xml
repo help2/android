@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name" translatable="false">HelpHelp\u00B2</string>
-    <string name="title_activity_maps" translatable="false">HelpHelp\u00B2</string>
+    <string name="app_name" translatable="false">helphelp\u00B2</string>
+    <string name="title_activity_maps" translatable="false">helphelp\u00B2</string>
 
     <string name="backend_url" translatable="false">https://helphelp2.com</string>
 
