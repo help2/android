@@ -16,4 +16,6 @@
 
     <string name="need_helpers">Helpers needed!</string>
 
+    <string name="infobox_text">Move heart slider up/down to switch between list/map view.\r\n\r\nTo add organizations visit:\r\nhttps://helphelp2.com/admin\r\n\r\nContacts: info@helphelp2.com</string>
+
 </resources>

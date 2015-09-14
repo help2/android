@@ -4,6 +4,7 @@ import android.location.Location;
 import android.support.v4.app.*;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -122,6 +123,20 @@ public class MainActivity extends FragmentActivity implements
             buildGoogleApiClient();
         } else {
             _mapFragment.placePins(_places, false);
+        }
+
+        getActionBar().setHomeButtonEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                InfoBoxDialogFragment dialog = new InfoBoxDialogFragment();
+                dialog.show(getSupportFragmentManager(), "infobox");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
