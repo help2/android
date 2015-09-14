@@ -7,4 +7,5 @@
     <string name="location_not_available">Standort ist nicht verfügbar. Entfernung kann nicht angezeigt werden.</string>
     <string name="places_you_can_help">Hier kannst Du Deine Spenden abgeben:</string>
     <string name="need_helpers">Wir suchen Helfer!</string>
+    <string name="infobox_text">Bewege das Herz hoch / runter um zwischen der Liste und der Karte zu wechseln.\r\n\r\nHalte das Herz gedrückt, um die Adressen zu aktualisieren.\r\n\r\nUm Adressen hinzuzufügen gehe zu:\r\nhttps://helphelp2.com/admin\r\n\r\nImpressum:\r\nRüdiger Trost / Lev Stipakov\r\nHofmannstraße 30\r\n81379 München\r\n+498923043117\r\ninfo@helphelp2.com</string>
 </resources>

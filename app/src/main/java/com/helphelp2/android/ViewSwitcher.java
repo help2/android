@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -11,9 +12,11 @@ import android.view.animation.AccelerateInterpolator;
 /**
  * Created by stipa on 2.9.15.
  */
-public class ViewSwitcher {
+public class ViewSwitcher extends GestureDetector.SimpleOnGestureListener {
     interface IViewSwicherListener {
         void onViewSwitched();
+
+        void onLongPress();
     }
 
     IViewSwicherListener _listener;
@@ -57,7 +60,8 @@ public class ViewSwitcher {
 
                 slider.animate().y(targetY).setDuration(1000).setListener(new Animator.AnimatorListener() {
                     @Override
-                    public void onAnimationStart(Animator animation) {}
+                    public void onAnimationStart(Animator animation) {
+                    }
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
@@ -77,10 +81,12 @@ public class ViewSwitcher {
                     }
 
                     @Override
-                    public void onAnimationCancel(Animator animation) {}
+                    public void onAnimationCancel(Animator animation) {
+                    }
 
                     @Override
-                    public void onAnimationRepeat(Animator animation) { }
+                    public void onAnimationRepeat(Animator animation) {
+                    }
                 });
             }
         }, _animState == INITIAL_ANIMATION_STATE.PHASE_1 ? 2000 : 1500);
@@ -104,10 +110,13 @@ public class ViewSwitcher {
 
         _animState = INITIAL_ANIMATION_STATE.values()[_prefs.getInt(PREF_INITIAL_ANIMATION, 0)];
 
+        final GestureDetector gdt = new GestureDetector(activity, this);
+
         slider.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 final View v = view;
+                gdt.onTouchEvent(event);
 
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_MOVE:
@@ -160,6 +169,12 @@ public class ViewSwitcher {
                 return true;
             }
         });
+    }
+
+    public void onLongPress (MotionEvent e) {
+        if (_activity != null) {
+            _listener.onLongPress();
+        }
     }
 
     public void onActivityDestroyed() {

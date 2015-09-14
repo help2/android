@@ -42,8 +42,6 @@ public class MainActivity extends FragmentActivity implements
         _loc = LocationServices.FusedLocationApi.getLastLocation(_googleApi);
 
         if (!_dataFrag.isPlacesFetched()) {
-            _toast = Toast.makeText(this, getString(R.string.fetching_places), Toast.LENGTH_SHORT);
-            _toast.show();
             fetchPlaces();
         }
     }
@@ -67,6 +65,7 @@ public class MainActivity extends FragmentActivity implements
 
         _dataFrag.setData(_places);
         _dataFrag.setCameraPosition(_cameraPos);
+        _dataFrag.setLocation(_loc);
     }
 
     ViewSwitcher _viewSwitcher;
@@ -92,6 +91,7 @@ public class MainActivity extends FragmentActivity implements
         } else {
             _places = _dataFrag.getPlaces();
             _cameraPos = _dataFrag.getCameraPosition();
+            _loc = _dataFrag.getLocation();
         }
 
         _mapFragment = new MapsFragment();
@@ -114,6 +114,11 @@ public class MainActivity extends FragmentActivity implements
                 }
                 transaction.commitAllowingStateLoss();
             }
+
+            @Override
+            public void onLongPress() {
+                fetchPlaces();
+            }
         });
 
         if (!_dataFrag.isPlacesFetched()) {
@@ -123,6 +128,7 @@ public class MainActivity extends FragmentActivity implements
             buildGoogleApiClient();
         } else {
             _mapFragment.placePins(_places, false);
+            _listFragment.setPlaces(_places);
         }
 
         getActionBar().setHomeButtonEnabled(true);
@@ -141,6 +147,8 @@ public class MainActivity extends FragmentActivity implements
     }
 
     private void parsePlaces(JSONObject obj) {
+        _places.clear();
+
         try {
             for (int i = 0; i < obj.getJSONArray("places").length(); ++ i){
                 Place place = new Place();
@@ -215,6 +223,9 @@ public class MainActivity extends FragmentActivity implements
     }
 
     private void fetchPlaces() {
+        _toast = Toast.makeText(this, getString(R.string.fetching_places), Toast.LENGTH_SHORT);
+        _toast.show();
+
         String url = getString(R.string.backend_url) + "/heart/places/";
         if (_loc != null) {
             url += String.format("?lat=%f&lon=%f", _loc.getLatitude(), _loc.getLongitude());
@@ -236,6 +247,8 @@ public class MainActivity extends FragmentActivity implements
                         if (_mapFragment.isVisible()) {
                             _mapFragment.placePins(_places, true);
                         }
+
+                        _listFragment.setPlaces(_places);
 
                         _viewSwitcher.playInitialAnimation(findViewById(R.id.heart_image));
                     }
@@ -261,9 +274,5 @@ public class MainActivity extends FragmentActivity implements
 
     public CameraPos getCameraPosition() {
         return _cameraPos;
-    }
-
-    public List<Place> getPlaces() {
-        return _places;
     }
 }

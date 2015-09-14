@@ -16,6 +16,9 @@ import java.util.Locale;
 public class ListPlacesFragment extends ListFragment implements AdapterView.OnItemClickListener {
     private LayoutInflater _inf;
 
+    PlacesAdapter _adapter;
+    Place[] _places;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -28,11 +31,13 @@ public class ListPlacesFragment extends ListFragment implements AdapterView.OnIt
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        List<Place> places = ((MainActivity)getActivity()).getPlaces();
 
-        if (places != null) {
-            setListAdapter(new PlacesAdapter(getActivity(),
-                    places.toArray(new Place[places.size()])));
+        _adapter = new PlacesAdapter(getActivity());
+        setListAdapter(_adapter);
+
+        if (_places != null) {
+            _adapter.clear();
+            _adapter.addAll(_places);
         }
     }
 
@@ -55,5 +60,13 @@ public class ListPlacesFragment extends ListFragment implements AdapterView.OnIt
         String uri = String.format(Locale.ENGLISH, "geo:0,0?q=%s", p.addr1);
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         startActivity(intent);
+    }
+
+    public void setPlaces(List<Place> places) {
+        _places = places.toArray(new Place[places.size()]);
+        if (_adapter != null && places != null) {
+            _adapter.clear();
+            _adapter.addAll(_places);
+        }
     }
 }

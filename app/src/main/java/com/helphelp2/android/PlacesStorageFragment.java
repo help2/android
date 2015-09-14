@@ -1,5 +1,6 @@
 package com.helphelp2.android;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -14,6 +15,7 @@ public class PlacesStorageFragment extends Fragment {
     private boolean _placesFetched;
     private List<Place> _places;
     private CameraPos _cameraPos;
+    private Location _loc;
 
     // this method is only called once for this fragment
     @Override
@@ -47,5 +49,13 @@ public class PlacesStorageFragment extends Fragment {
 
     public CameraPos getCameraPosition() {
         return _cameraPos;
+    }
+
+    public Location getLocation() {
+        return _loc;
+    }
+
+    public void setLocation(Location loc) {
+        _loc = loc;
     }
 }

@@ -24,8 +24,8 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
         private TextView helpers;
     }
 
-    public PlacesAdapter(Context context, Place[] values) {
-        super(context, -1, values);
+    public PlacesAdapter(Context context) {
+        super(context, -1);
         _inf = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
