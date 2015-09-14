@@ -8,8 +8,8 @@ android {
         applicationId "com.helphelp2.android"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 8
-        versionName "1.33"
+        versionCode 9
+        versionName "1.4"
     }
     buildTypes {
         release {
