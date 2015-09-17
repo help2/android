@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -11,7 +12,8 @@
             android:id="@+id/address"
             android:layout_margin="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:text="@string/place_item_address1"/>
 
         <ImageView
             android:id="@+id/dialog_maps_icon"
@@ -28,7 +30,8 @@
         android:id="@+id/address2"
         android:autoLink="all"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:text="@string/place_item_address2"/>
 
 
     <View
@@ -41,7 +44,8 @@
         android:layout_margin="5dp"
         android:textStyle="italic"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:text="@string/place_item_helpers"/>
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -55,9 +59,9 @@
             android:id="@+id/items"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1.0"/>
+            android:layout_weight="1.0"
+            tools:text="@string/place_item_items"/>
 
     </ScrollView>
-
 
 </LinearLayout>

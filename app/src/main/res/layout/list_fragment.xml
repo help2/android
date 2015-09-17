@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/progress_container_id"
@@ -26,8 +27,7 @@
             android:text="@string/places_you_can_help"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center_horizontal|center_vertical"
-            xmlns:android="http://schemas.android.com/apk/res/android"></TextView>
+            android:gravity="center_horizontal|center_vertical" />
 
         <TextView
             android:id="@+id/empty_id"
@@ -40,7 +40,8 @@
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:drawSelectorOnTop="false" >
+            android:drawSelectorOnTop="false"
+            tools:listitem="@layout/row" >
         </ListView>
     </FrameLayout>
 </FrameLayout>

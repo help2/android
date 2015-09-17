@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Design time placeholders -->
+    <string name="place_item_name">
+        Pankow - Notunterkunft Storkower Str.
+    </string>
+    <string name="place_item_distance">
+        1548,5 km -
+    </string>
+    <string name="place_item_address1">
+        Storkower Str. 133a, 10147, Berlin
+    </string>
+    <string name="place_item_address2">
+        bis 18:30 Uhr
+    </string>
+    <string name="place_item_helpers">
+        @string/need_helpers
+    </string>
+    <string name="place_item_items">
+        Wasser, Duschgel, Kissen zum Schlafen, Einwegrasierer, Tampon,
+        Damenbinden verschiedene Größen, Zahnpasta, Zahnbürsten, Handtücher,
+        Deodorants!! Spray Deos, Decken, Bettzeug, Zucker und Salz
+    </string>
+
+</resources>
