@@ -1,19 +1,22 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
+# Eclipse
+local.properties
+
+# Operating systems
 .DS_Store
-/build
-/captures
 
-.idea/misc.xml
+# IntelliJ / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+captures/
 
-.idea/misc.xml
+# Android build files
+*.apk
+*.ap_
 
-.idea/misc.xml
-
-app/app.iml
-
-app/app-release.apk
-
-.idea/misc.xml
+# Gradle
+.gradle/
+build/
+.gradletasknamecache
+gradle.properties
