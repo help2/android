@@ -19,13 +19,13 @@ import java.util.Locale;
  */
 public class PlaceDialogFragment extends DialogFragment {
     public static PlaceDialogFragment newInstance(String title, String addr, String addr2,
-                                                  String items, String helpers) {
+                                                  String items, boolean helpers) {
         PlaceDialogFragment frag = new PlaceDialogFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
         args.putString("addr", addr);
         args.putString("addr2", addr2);
-        args.putString("helpers", helpers);
+        args.putBoolean("helpers", helpers);
         args.putString("items", items);
         frag.setArguments(args);
         return frag;
@@ -38,7 +38,7 @@ public class PlaceDialogFragment extends DialogFragment {
         final String addr = getArguments().getString("addr");
         String addr2 = getArguments().getString("addr2");
         String items = getArguments().getString("items");
-        String helpers = getArguments().getString("helpers");
+        boolean helpers = getArguments().getBoolean("helpers");
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
@@ -57,8 +57,8 @@ public class PlaceDialogFragment extends DialogFragment {
         }
 
         tv = (TextView)layout.findViewById(R.id.helpers);
-        if (!helpers.isEmpty()) {
-            tv.setText(helpers);
+        if (helpers) {
+            tv.setText(R.string.need_helpers);
         } else {
             tv.setVisibility(View.GONE);
         }

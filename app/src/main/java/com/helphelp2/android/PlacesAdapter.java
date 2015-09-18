@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.helphelp2.android.models.Address;
+import com.helphelp2.android.models.Place;
+
 /**
  * Created by stipa on 3.9.15.
  */
@@ -52,18 +55,21 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
         Place p = getItem(position);
 
         holder.name.setText(p.name);
-        holder.distance.setText(Place.getDistanceStr(p.dist) + " - ");
+        holder.distance.setText(Place.getDistanceStr(p.distance) + " - ");
 
-        if (!p.addr1.isEmpty()) {
+        Address address = p.addr;
+        String addr1 = address.getAddr1();
+        if (!addr1.isEmpty()) {
             holder.addr1.setVisibility(View.VISIBLE);
-            holder.addr1.setText(p.addr1);
+            holder.addr1.setText(addr1);
         } else {
             holder.addr1.setVisibility(View.GONE);
         }
 
-        if (!p.addr2.isEmpty()) {
+        String addr2 = p.getAddr2();
+        if (!addr2.isEmpty()) {
             holder.addr2.setVisibility(View.VISIBLE);
-            holder.addr2.setText(Html.fromHtml(p.addr2));
+            holder.addr2.setText(Html.fromHtml(addr2));
             holder.addr2.setFocusable(false);
         } else {
             holder.addr2.setVisibility(View.GONE);
@@ -76,9 +82,9 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
             holder.items.setVisibility(View.GONE);
         }
 
-        if (!p.helpers.isEmpty()) {
+        if (p.helpers) {
             holder.helpers.setVisibility(View.VISIBLE);
-            holder.helpers.setText(p.helpers);
+            holder.helpers.setText(R.string.need_helpers);
         } else {
             holder.helpers.setVisibility(View.GONE);
         }
