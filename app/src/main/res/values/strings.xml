@@ -4,7 +4,6 @@
 
     <string name="backend_url" translatable="false">https://helphelp2.com</string>
 
-    <string name="preparing_map">Preparing map...</string>
     <string name="acquiring_location">Acquiring location...</string>
     <string name="location_not_available">Location is not available. Distance won\'t be shown.</string>
     <string name="fetching_places">Fetching places...</string>
