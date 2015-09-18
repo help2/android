@@ -6,6 +6,7 @@ local.properties
 
 # IntelliJ / Android Studio
 *.iml
+app/*.iml
 *.ipr
 *.iws
 .idea/

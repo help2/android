@@ -96,8 +96,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
     public void placePins(List<Place> places, boolean moveCamera) {
         _places = places;
+
         _moveCamera = moveCamera;
-        if (_map == null) {
+        if (_markerToPlace != null) {
+            _markerToPlace.clear();
+        }
+        if (_map != null) {
+            _map.clear();
+        } else {
             return;
         }
 

@@ -50,7 +50,7 @@ public class Place {
 
         if (dist != 0) {
             if (dist < 100) {
-                res += dist + "m";
+                res += (int)dist + "m";
             } else if (dist >= 100 && dist <= 1000) {
                 res += (int) (dist / 100) + "00m";
             } else {
