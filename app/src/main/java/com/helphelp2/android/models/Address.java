@@ -1,4 +1,4 @@
-package com.helphelp2.android;
+package com.helphelp2.android.models;
 
 import android.text.TextUtils;
 
@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Address {
 
-    String city;
-    double lat;
-    double lon;
-    String street;
-    String zip;
+    public String city;
+    public double lat;
+    public double lon;
+    public String street;
+    public String zip;
 
     private String addr1;
 

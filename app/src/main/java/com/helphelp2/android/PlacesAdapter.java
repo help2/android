@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.helphelp2.android.models.Address;
+import com.helphelp2.android.models.Place;
+
 /**
  * Created by stipa on 3.9.15.
  */

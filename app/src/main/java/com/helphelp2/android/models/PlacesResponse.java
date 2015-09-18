@@ -1,10 +1,10 @@
-package com.helphelp2.android;
+package com.helphelp2.android.models;
 
 import java.util.List;
 
 public class PlacesResponse {
 
-    List<Place> places;
+    public List<Place> places;
 
     @Override
     public String toString() {

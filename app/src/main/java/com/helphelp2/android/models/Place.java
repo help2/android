@@ -1,4 +1,4 @@
-package com.helphelp2.android;
+package com.helphelp2.android.models;
 
 import android.text.TextUtils;
 
@@ -10,17 +10,17 @@ import java.util.List;
  */
 public class Place {
 
-    String name;
-    String id;
-    String phone;
-    String hours;
-    String website;
-    String person;
-    double distance;
-    String distStr; // Not contained in JSON response
-    boolean helpers;
-    Address addr;
-    List<String> items;
+    public String name;
+    public String id;
+    public String phone;
+    public String hours;
+    public String website;
+    public String person;
+    public double distance;
+    public String distStr; // Not contained in JSON response
+    public boolean helpers;
+    public Address addr;
+    public List<String> items;
 
     private String addr2;
 
@@ -45,7 +45,7 @@ public class Place {
         return addr2;
     }
 
-    static String getDistanceStr(double dist) {
+    public static String getDistanceStr(double dist) {
         String res = "";
 
         if (dist != 0) {

@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.helphelp2.android.models.Address;
+import com.helphelp2.android.models.Place;
+
 import java.util.List;
 import java.util.Locale;
 

@@ -18,6 +18,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.helphelp2.android.models.Address;
+import com.helphelp2.android.models.Place;
 
 import java.util.HashMap;
 import java.util.List;
