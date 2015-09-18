@@ -3,7 +3,6 @@ package com.helphelp2.android;
 import android.location.Location;
 import android.support.v4.app.*;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -16,10 +15,12 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -146,73 +147,6 @@ public class MainActivity extends FragmentActivity implements
         }
     }
 
-    private void parsePlaces(JSONObject obj) {
-        _places.clear();
-
-        try {
-            for (int i = 0; i < obj.getJSONArray("places").length(); ++ i){
-                Place place = new Place();
-                place.items = new LinkedList<>();
-
-                JSONObject p = obj.getJSONArray("places").getJSONObject(i);
-                for (int j = 0; j < p.getJSONArray("items").length(); ++ j) {
-                    place.items.add(p.getJSONArray("items").getString(j));
-                }
-
-                JSONObject addr = p.getJSONObject("addr");
-
-                place.name = p.getString("name");
-                place.lat = addr.getDouble("lat");
-                place.lon = addr.getDouble("lon");
-                place.street = addr.getString("street");
-                place.city = addr.getString("city");
-                place.zipcode = addr.getString("zip");
-
-                place.person = p.getString("person");
-                place.hours = p.getString("hours");
-                place.phone = p.getString("phone");
-                place.website = p.getString("website");
-                place.dist = p.getDouble("distance");
-
-                place.helpers = p.getBoolean("helpers") ? getString(R.string.need_helpers) : "";
-
-                if (_loc == null) {
-                    place.dist = 0;
-                }
-
-                place.distStr = Place.getDistanceStr(place.dist);
-
-                List<String> addr1 = new LinkedList<>();
-                addr1.add(place.street);
-                if (!place.zipcode.isEmpty()) {
-                    addr1.add(place.zipcode);
-                }
-                addr1.add(place.city);
-                place.addr1 = TextUtils.join(", ", addr1);
-
-                List<String> addr2 = new LinkedList<>();
-                if (!place.person.isEmpty()) {
-                    addr2.add(place.person);
-                }
-                if (!place.phone.isEmpty()) {
-                    addr2.add(String.format("<a href=\"tel:%s\">%s</a>", place.phone, place.phone));
-                }
-                if (!place.hours.isEmpty()) {
-                    addr2.add(place.hours);
-                }
-                if (!place.website.isEmpty()) {
-                    addr2.add(String.format("<a href=\"%s\">%s</a>", place.website, place.website));
-                }
-
-                place.addr2 = TextUtils.join(", ", addr2);
-
-                _places.add(place);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
     protected synchronized void buildGoogleApiClient() {
         _googleApi = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -235,6 +169,7 @@ public class MainActivity extends FragmentActivity implements
                     @Override
                     public void onResponse(JSONObject response) {
                         parsePlaces(response);
+                        updateDistanceString(_loc == null);
                         _dataFrag.setPlacesFetched();
                         if (_toast != null) {
                             _toast.cancel();
@@ -264,6 +199,30 @@ public class MainActivity extends FragmentActivity implements
                     }
                 });
         _queue.add(jsObjRequest);
+    }
+
+    private void parsePlaces(JSONObject placesJsonString) {
+        Moshi moshi = new Moshi.Builder().build();
+        JsonAdapter<PlacesResponse> jsonAdapter =
+                moshi.adapter(PlacesResponse.class);
+        PlacesResponse placesResponse = null;
+        try {
+            placesResponse = jsonAdapter.fromJson(placesJsonString.toString());
+            _places = placesResponse.places;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateDistanceString(boolean locationIsUnknown) {
+        List<Place> places = _places;
+        for (int i = 0, size = places.size(); i < size; ++i) {
+            Place place = places.get(i);
+            if (locationIsUnknown) {
+                place.distance = 0;
+            }
+            place.distStr = Place.getDistanceStr(place.distance);
+        }
     }
 
     CameraPos _cameraPos;

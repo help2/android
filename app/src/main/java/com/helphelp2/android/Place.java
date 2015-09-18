@@ -1,29 +1,49 @@
 package com.helphelp2.android;
 
+import android.text.TextUtils;
+
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by stipa on 29.8.15.
  */
 public class Place {
+
     String name;
     String id;
     String phone;
     String hours;
     String website;
     String person;
-    String street;
-    String city;
-    String zipcode;
-    double lat;
-    double lon;
-    double dist;
-    String distStr;
+    double distance;
+    String distStr; // Not contained in JSON response
+    boolean helpers;
+    Address addr;
+    List<String> items;
 
-    String addr1;
-    String addr2;
+    private String addr2;
 
-    String helpers;
+    public String getAddr2() {
+        if (addr2 != null) {
+            return addr2;
+        }
+        List<String> address = new LinkedList<>();
+        if (!person.isEmpty()) {
+            address.add(person);
+        }
+        if (!phone.isEmpty()) {
+            address.add(String.format("<a href=\"tel:%s\">%s</a>", phone, phone));
+        }
+        if (!hours.isEmpty()) {
+            address.add(hours);
+        }
+        if (!website.isEmpty()) {
+            address.add(String.format("<a href=\"%s\">%s</a>", website, website));
+        }
+        addr2 = TextUtils.join(", ", address);
+        return addr2;
+    }
 
     static String getDistanceStr(double dist) {
         String res = "";
@@ -41,5 +61,18 @@ public class Place {
         return res;
     }
 
-    List<String> items;
+    @Override
+    public String toString() {
+        return "id: " + id +
+                "; distance: " + distance +
+                "; helpers: " + helpers +
+                "; hours: " + hours +
+                "; name: " + name +
+                "; person: " + person +
+                "; phone: " + phone +
+                "; website: " + website +
+                "; items: " + items +
+                "; addr: { " + addr + " }";
+    }
+
 }

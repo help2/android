@@ -56,8 +56,8 @@ public class ListPlacesFragment extends ListFragment implements AdapterView.OnIt
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Place p = (Place) getListAdapter().getItem(position);
-
-        String uri = String.format(Locale.ENGLISH, "geo:0,0?q=%s", p.addr1);
+        Address address = p.addr;
+        String uri = String.format(Locale.ENGLISH, "geo:0,0?q=%s", address.getAddr1());
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         startActivity(intent);
     }

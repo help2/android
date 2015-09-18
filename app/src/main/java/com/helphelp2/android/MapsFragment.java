@@ -81,10 +81,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
         String name = p.name;
         if (!p.distStr.isEmpty()) {
-            name += " (" + Place.getDistanceStr(p.dist) + ")";
+            name += " (" + Place.getDistanceStr(p.distance) + ")";
         }
-
-        DialogFragment dialog = PlaceDialogFragment.newInstance(name, p.addr1, p.addr2,
+        Address address = p.addr;
+        DialogFragment dialog = PlaceDialogFragment.newInstance(
+                name, address.getAddr1(), p.getAddr2(),
                 TextUtils.join(", ", p.items), p.helpers);
         dialog.show(getFragmentManager(), "place");
 
@@ -102,12 +103,13 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         Marker closestMarket = null;
 
         for (Place p : places){
-            LatLng pos = new LatLng(p.lat, p.lon);
+            Address address = p.addr;
+            LatLng pos = new LatLng(address.lat, address.lon);
 
             Marker m = _map.addMarker(new MarkerOptions().position(pos).title(p.name));
-            if (p.dist < dist) {
+            if (p.distance < dist) {
                 closestMarket = m;
-                dist = p.dist;
+                dist = p.distance;
             }
 
             _markerToPlace.put(m, p);
