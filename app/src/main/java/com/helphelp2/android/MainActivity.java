@@ -3,6 +3,8 @@ package com.helphelp2.android;
 import android.location.Location;
 import android.support.v4.app.*;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -27,7 +29,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class MainActivity extends FragmentActivity implements
+public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
     private RequestQueue _queue;
@@ -134,7 +136,10 @@ public class MainActivity extends FragmentActivity implements
             _listFragment.setPlaces(_places);
         }
 
-        getActionBar().setHomeButtonEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+        }
     }
 
     @Override
