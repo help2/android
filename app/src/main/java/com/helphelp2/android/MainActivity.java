@@ -1,8 +1,10 @@
 package com.helphelp2.android;
 
 import android.location.Location;
+import android.net.Uri;
 import android.support.v4.app.*;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -162,12 +164,9 @@ public class MainActivity extends FragmentActivity implements
         _toast = Toast.makeText(this, getString(R.string.fetching_places), Toast.LENGTH_SHORT);
         _toast.show();
 
-        String url = getString(R.string.backend_url) + "/heart/places/";
-        if (_loc != null) {
-            url += String.format("?lat=%f&lon=%f", _loc.getLatitude(), _loc.getLongitude());
-        }
+        String backendUrl = getBackendUrl();
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, backendUrl, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         parsePlaces(response);
@@ -201,6 +200,25 @@ public class MainActivity extends FragmentActivity implements
                     }
                 });
         _queue.add(jsObjRequest);
+    }
+
+    @NonNull
+    private String getBackendUrl() {
+        Uri uri = Uri.parse(BuildConfig.API_END_POINT);
+        if (_loc == null) {
+            uri = uri.buildUpon()
+                    .appendPath(BuildConfig.API_PLACES_READ_PATH)
+                    .build();
+        } else {
+            uri = uri.buildUpon()
+                    .appendPath(BuildConfig.API_PLACES_READ_PATH)
+                    .appendQueryParameter(BuildConfig.API_QUERY_PARAMETER_LATITUDE,
+                            "" + _loc.getLatitude())
+                    .appendQueryParameter(BuildConfig.API_QUERY_PARAMETER_LONGITUDE,
+                            "" + _loc.getLongitude())
+                    .build();
+        }
+        return uri.toString();
     }
 
     private void parsePlaces(JSONObject placesJsonString) {

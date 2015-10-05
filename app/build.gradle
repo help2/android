@@ -10,6 +10,11 @@ android {
         targetSdkVersion 22
         versionCode 10
         versionName "1.45"
+        // API configuration
+        buildConfigField "String", "API_END_POINT", '"https://helphelp2.com"'
+        buildConfigField "String", "API_PLACES_READ_PATH", '"/heart/places/"'
+        buildConfigField "String", "API_QUERY_PARAMETER_LATITUDE", '"lat"'
+        buildConfigField "String", "API_QUERY_PARAMETER_LONGITUDE", '"lon"'
     }
     buildTypes {
         release {
