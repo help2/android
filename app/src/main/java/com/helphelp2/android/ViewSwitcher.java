@@ -1,9 +1,11 @@
 package com.helphelp2.android;
 
 import android.animation.Animator;
-import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,11 +19,13 @@ public class ViewSwitcher extends GestureDetector.SimpleOnGestureListener {
         void onViewSwitched();
 
         void onLongPress();
+
+        void onShortPress();
     }
 
     IViewSwicherListener _listener;
     View _slider;
-    Activity _activity;
+    AppCompatActivity _activity;
     SharedPreferences _prefs;
 
     public static final String PREFS_NAME = "prefs";
@@ -102,7 +106,25 @@ public class ViewSwitcher extends GestureDetector.SimpleOnGestureListener {
         playAnimation(slider);
     }
 
-    public ViewSwitcher(Activity activity, View slider, IViewSwicherListener listener) {
+    private int getActivityHeight() {
+        // status bar
+        int res = 0;
+        int resourceId = _activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            res = _activity.getResources().getDimensionPixelSize(resourceId);
+        }
+
+        // action bar
+        res += _activity.getSupportActionBar().getHeight();
+
+        // display
+        Display display = _activity.getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.y - res;
+    }
+
+    public ViewSwitcher(AppCompatActivity activity, View slider, IViewSwicherListener listener) {
         _listener = listener;
         _activity = activity;
         _slider = slider;
@@ -125,12 +147,12 @@ public class ViewSwitcher extends GestureDetector.SimpleOnGestureListener {
 
                     case MotionEvent.ACTION_UP:
                         int delta = (int) Math.abs(_initialY - v.getY());
-                        int activityHeight = _activity.getWindow().getDecorView().getHeight();
+                        int activityHeight = getActivityHeight();
+
                         final boolean swi = (delta > activityHeight / 4);
                         float targetY = _initialY;
                         if (swi) {
-                            targetY = _sliderOnTop ? activityHeight - _slider.getHeight() * 2 :
-                                    0;
+                            targetY = _sliderOnTop ? activityHeight - _slider.getHeight() : 0;
                             _sliderOnTop = !_sliderOnTop;
                         }
 
@@ -175,6 +197,15 @@ public class ViewSwitcher extends GestureDetector.SimpleOnGestureListener {
         if (_activity != null) {
             _listener.onLongPress();
         }
+    }
+
+    public boolean onSingleTapConfirmed (MotionEvent e) {
+        if (_activity != null) {
+            _listener.onShortPress();
+            return true;
+        }
+
+        return false;
     }
 
     public void onActivityDestroyed() {

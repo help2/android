@@ -4,6 +4,8 @@ import android.location.Location;
 import android.net.Uri;
 import android.support.v4.app.*;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -29,7 +31,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class MainActivity extends FragmentActivity implements
+public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
     private RequestQueue _queue;
@@ -107,24 +109,32 @@ public class MainActivity extends FragmentActivity implements
         fragmentTransaction.add(R.id.fragment_container, _mapFragment, "map");
         fragmentTransaction.commit();
 
-        _viewSwitcher = new ViewSwitcher(this, findViewById(R.id.heart_image), new ViewSwitcher.IViewSwicherListener() {
-            @Override
-            public void onViewSwitched() {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                //transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                if (_mapFragment.isVisible()) {
-                    transaction.replace(R.id.fragment_container, _listFragment);
-                } else {
-                    transaction.replace(R.id.fragment_container, _mapFragment);
-                }
-                transaction.commitAllowingStateLoss();
-            }
+        _viewSwitcher = new ViewSwitcher(this, findViewById(R.id.heart_image),
+                new ViewSwitcher.IViewSwicherListener() {
 
-            @Override
-            public void onLongPress() {
-                fetchPlaces();
-            }
-        });
+                    @Override
+                    public void onViewSwitched() {
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        //transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+                        if (_mapFragment.isVisible()) {
+                            transaction.replace(R.id.fragment_container, _listFragment);
+                        } else {
+                            transaction.replace(R.id.fragment_container, _mapFragment);
+                        }
+                        transaction.commitAllowingStateLoss();
+                    }
+
+                    @Override
+                    public void onLongPress() {
+                        fetchPlaces();
+                    }
+
+                    @Override
+                    public void onShortPress() {
+                        InfoBoxDialogFragment dialog = new InfoBoxDialogFragment();
+                        dialog.show(getSupportFragmentManager(), "infobox");
+                    }
+                });
 
         if (!_dataFrag.isPlacesFetched()) {
             if (_toast != null) _toast.cancel();
@@ -134,20 +144,6 @@ public class MainActivity extends FragmentActivity implements
         } else {
             _mapFragment.placePins(_places, false);
             _listFragment.setPlaces(_places);
-        }
-
-        getActionBar().setHomeButtonEnabled(true);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                InfoBoxDialogFragment dialog = new InfoBoxDialogFragment();
-                dialog.show(getSupportFragmentManager(), "infobox");
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
     }
 
