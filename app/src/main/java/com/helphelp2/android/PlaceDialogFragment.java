@@ -18,27 +18,34 @@ import java.util.Locale;
  * Created by stipa on 2.9.15.
  */
 public class PlaceDialogFragment extends DialogFragment {
+
+    protected static final String BUNDLE_KEY_ADDR = "addr";
+    protected static final String BUNDLE_KEY_ADDR2 = "addr2";
+    protected static final String BUNDLE_KEY_HELPERS = "helpers";
+    protected static final String BUNDLE_KEY_ITEMS = "items";
+    protected static final String BUNDLE_KEY_TITLE = "title";
+
     public static PlaceDialogFragment newInstance(String title, String addr, String addr2,
                                                   String items, boolean helpers) {
         PlaceDialogFragment frag = new PlaceDialogFragment();
         Bundle args = new Bundle();
-        args.putString("title", title);
-        args.putString("addr", addr);
-        args.putString("addr2", addr2);
-        args.putBoolean("helpers", helpers);
-        args.putString("items", items);
+        args.putString(BUNDLE_KEY_TITLE, title);
+        args.putString(BUNDLE_KEY_ADDR, addr);
+        args.putString(BUNDLE_KEY_ADDR2, addr2);
+        args.putBoolean(BUNDLE_KEY_HELPERS, helpers);
+        args.putString(BUNDLE_KEY_ITEMS, items);
         frag.setArguments(args);
         return frag;
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        String title = getArguments().getString("title");
+        String title = getArguments().getString(BUNDLE_KEY_TITLE);
 
-        final String addr = getArguments().getString("addr");
-        String addr2 = getArguments().getString("addr2");
-        String items = getArguments().getString("items");
-        boolean helpers = getArguments().getBoolean("helpers");
+        final String addr = getArguments().getString(BUNDLE_KEY_ADDR);
+        String addr2 = getArguments().getString(BUNDLE_KEY_ADDR2);
+        String items = getArguments().getString(BUNDLE_KEY_ITEMS);
+        boolean helpers = getArguments().getBoolean(BUNDLE_KEY_HELPERS);
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
