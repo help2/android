@@ -25,6 +25,8 @@ public class PlaceDialogFragment extends DialogFragment {
     protected static final String BUNDLE_KEY_ITEMS = "items";
     protected static final String BUNDLE_KEY_TITLE = "title";
 
+    protected static final String GEO_INTENT_PATTERN = "geo:0,0?q=%s";
+
     public static PlaceDialogFragment newInstance(String title, String addr, String addr2,
                                                   String items, boolean helpers) {
         PlaceDialogFragment frag = new PlaceDialogFragment();
@@ -80,7 +82,7 @@ public class PlaceDialogFragment extends DialogFragment {
         maps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uri = String.format(Locale.ENGLISH, "geo:0,0?q=%s", addr);
+                String uri = String.format(Locale.ENGLISH, GEO_INTENT_PATTERN, addr);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(intent);
             }
