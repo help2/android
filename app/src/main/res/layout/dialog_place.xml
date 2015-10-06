@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/address"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/place_dialog_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@string/place_item_address1"/>
@@ -24,9 +24,9 @@
 
 
     <TextView
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/place_dialog_margin"
+        android:layout_marginRight="@dimen/place_dialog_margin"
+        android:layout_marginBottom="@dimen/place_dialog_margin"
         android:id="@+id/address2"
         android:autoLink="all"
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
 
     <TextView
         android:id="@+id/helpers"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/place_dialog_margin"
         android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
         android:layout_weight="1"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/place_dialog_margin"
         android:fillViewport="true">
 
         <TextView
