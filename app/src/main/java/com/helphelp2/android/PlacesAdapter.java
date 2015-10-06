@@ -50,7 +50,7 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
         ViewHolder holder;
 
         if (convertView == null) {
-            convertView = _inf.inflate(R.layout.row, null);
+            convertView = _inf.inflate(R.layout.row, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         }
