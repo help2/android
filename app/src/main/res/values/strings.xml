@@ -2,9 +2,9 @@
     <string name="app_name" translatable="false">helphelp\u00B2</string>
     <string name="title_activity_maps" translatable="false">helphelp\u00B2</string>
 
-    <string name="acquiring_location">Acquiring location...</string>
+    <string name="acquiring_location">Acquiring location &#8230;</string>
     <string name="location_not_available">Location is not available. Distance won\'t be shown.</string>
-    <string name="fetching_places">Fetching places...</string>
+    <string name="fetching_places">Fetching places &#8230;</string>
     <string name="ready">Ready!</string>
 
     <string name="fetching_places_error">Cannot fetch places, try later</string>
