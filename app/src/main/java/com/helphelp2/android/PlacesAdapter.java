@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.helphelp2.android.models.Address;
 import com.helphelp2.android.models.Place;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by stipa on 3.9.15.
  */
@@ -19,12 +22,22 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
     private LayoutInflater _inf;
 
     static class ViewHolder {
-        private TextView name;
-        private TextView distance;
-        private TextView addr1;
-        private TextView addr2;
-        private TextView items;
-        private TextView helpers;
+        @Bind(R.id.name)
+        TextView name;
+        @Bind(R.id.distance)
+        TextView distance;
+        @Bind(R.id.list_address1)
+        TextView addr1;
+        @Bind(R.id.list_address2)
+        TextView addr2;
+        @Bind(R.id.list_items)
+        TextView items;
+        @Bind(R.id.list_helpers)
+        TextView helpers;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
     public PlacesAdapter(Context context) {
@@ -38,14 +51,7 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
 
         if (convertView == null) {
             convertView = _inf.inflate(R.layout.row, null);
-            holder = new ViewHolder();
-            holder.name = (TextView) convertView.findViewById(R.id.name);
-            holder.distance = (TextView) convertView.findViewById(R.id.distance);
-            holder.addr1 = (TextView) convertView.findViewById(R.id.list_address1);
-            holder.addr2 = (TextView) convertView.findViewById(R.id.list_address2);
-            holder.items = (TextView) convertView.findViewById(R.id.list_items);
-            holder.helpers = (TextView) convertView.findViewById(R.id.list_helpers);
-
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         }
         else {
