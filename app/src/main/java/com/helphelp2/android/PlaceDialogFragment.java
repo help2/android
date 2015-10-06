@@ -63,12 +63,12 @@ public class PlaceDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        String title = getArguments().getString(BUNDLE_KEY_TITLE);
-
-        addr = getArguments().getString(BUNDLE_KEY_ADDR);
-        String addr2 = getArguments().getString(BUNDLE_KEY_ADDR2);
-        String items = getArguments().getString(BUNDLE_KEY_ITEMS);
-        boolean helpers = getArguments().getBoolean(BUNDLE_KEY_HELPERS);
+        Bundle arguments = getArguments();
+        String title = arguments.getString(BUNDLE_KEY_TITLE);
+        addr = arguments.getString(BUNDLE_KEY_ADDR);
+        String addr2 = arguments.getString(BUNDLE_KEY_ADDR2);
+        String items = arguments.getString(BUNDLE_KEY_ITEMS);
+        boolean helpers = arguments.getBoolean(BUNDLE_KEY_HELPERS);
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
