@@ -58,7 +58,7 @@
     <TextView
         android:id="@+id/list_items"
         android:textStyle="bold"
-        android:textColor="#ff888888"
+        android:textColor="@color/place_row_list_items_text"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_width="wrap_content"

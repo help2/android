@@ -5,4 +5,10 @@
     <color name="primary_dark">#731a63</color>
     <color name="accent">#0396A6</color>
 
+    <!-- Place dialog -->
+    <color name="place_dialog_divider">@android:color/darker_gray</color>
+
+    <!-- Place row -->
+    <color name="place_row_list_items_text">#888888</color>
+
 </resources>

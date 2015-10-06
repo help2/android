@@ -37,7 +37,7 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="@color/place_dialog_divider"/>
 
     <TextView
         android:id="@+id/helpers"
