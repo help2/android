@@ -19,7 +19,7 @@ public class InfoBoxDialogFragment extends DialogFragment {
 
         final SpannableString s = new SpannableString(getString(R.string.infobox_text));
         Linkify.addLinks(s, Linkify.ALL);
-        builder.setTitle(R.string.app_name);
+        builder.setTitle(getString(R.string.app_name) + " " + BuildConfig.VERSION_NAME);
         builder.setMessage(s);
 
         return builder.create();
