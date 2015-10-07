@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="primary" type="color">#8e217a</item>
-    <item name="primary_dark" type="color">#731a63</item>
-    <item name="accent" type="color">#0396A6</item>
+    <color name="primary">#8e217a</color>
+    <color name="primary_dark">#731a63</color>
+    <color name="accent">#0396A6</color>
+
+    <!-- Place dialog -->
+    <color name="place_dialog_divider">@android:color/darker_gray</color>
+
+    <!-- Place row -->
+    <color name="place_row_list_items_text">#888888</color>
 
 </resources>

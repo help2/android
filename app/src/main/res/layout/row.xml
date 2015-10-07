@@ -6,9 +6,9 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="@dimen/place_row_primary_margin_left"
+        android:layout_marginRight="@dimen/place_row_primary_margin_right"
+        android:layout_marginTop="@dimen/place_row_primary_margin_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -30,8 +30,8 @@
     <TextView
         android:id="@+id/list_address1"
         android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/place_row_primary_margin_left"
+        android:layout_marginRight="@dimen/place_row_primary_margin_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="@string/place_item_address1" />
@@ -39,7 +39,7 @@
     <TextView
         android:id="@+id/list_address2"
         android:textStyle="bold"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/place_row_primary_margin_left"
         android:layout_marginRight="30dp"
         android:autoLink="all"
         android:layout_width="wrap_content"
@@ -49,8 +49,8 @@
     <TextView
         android:id="@+id/list_helpers"
         android:textStyle="italic"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="@dimen/place_row_secondary_margin_left"
+        android:layout_marginRight="@dimen/place_row_secondary_margin_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="@string/place_item_helpers" />
@@ -58,9 +58,9 @@
     <TextView
         android:id="@+id/list_items"
         android:textStyle="bold"
-        android:textColor="#ff888888"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:textColor="@color/place_row_list_items_text"
+        android:layout_marginLeft="@dimen/place_row_secondary_margin_left"
+        android:layout_marginRight="@dimen/place_row_secondary_margin_left"
         android:layout_width="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_height="wrap_content"
