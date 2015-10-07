@@ -75,8 +75,11 @@ public class PlaceDialogFragment extends DialogFragment {
         View layout = inflater.inflate(R.layout.dialog_place, null);
         ButterKnife.bind(this, layout);
 
-        _addressTextView.setText(addr);
-        _itemsTextView.setText(items);
+        if (!TextUtils.isEmpty(addr)) {
+            _addressTextView.setText(addr);
+        } else {
+            _addressTextView.setVisibility(View.GONE);
+        }
 
         if (!TextUtils.isEmpty(addr2)) {
             _address2TextView.setText(Html.fromHtml(addr2));
@@ -88,6 +91,12 @@ public class PlaceDialogFragment extends DialogFragment {
             _helpersTextView.setText(R.string.need_helpers);
         } else {
             _helpersTextView.setVisibility(View.GONE);
+        }
+
+        if (!TextUtils.isEmpty(items)) {
+            _itemsTextView.setText(items);
+        } else {
+            _itemsTextView.setVisibility(View.GONE);
         }
 
         builder.setView(layout);
