@@ -96,7 +96,7 @@ public class PlaceDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    @OnClick(R.id.dialog_maps_icon)
+    @OnClick(R.id.address)
     public void onMapsIconClick() {
         if (TextUtils.isEmpty(addr)) {
             return;
