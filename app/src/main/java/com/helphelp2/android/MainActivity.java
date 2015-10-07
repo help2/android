@@ -2,12 +2,11 @@ package com.helphelp2.android;
 
 import android.location.Location;
 import android.net.Uri;
-import android.support.v4.app.*;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -62,14 +61,10 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onConnectionSuspended(int i) {
-        int a;
-        a = 0;
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        int a;
-        a = 0;
     }
 
     protected void onDestroy() {
