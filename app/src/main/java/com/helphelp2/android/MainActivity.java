@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -30,6 +31,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
@@ -41,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements
     private List<Place> _places;
 
     private PlacesStorageFragment _dataFrag;
+
+    @Bind(R.id.heart_image)
+    ImageView _heartImageView;
 
     @Override
     public void onConnected(Bundle bundle) {
@@ -83,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         _queue = Volley.newRequestQueue(this);
 
@@ -109,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements
         fragmentTransaction.add(R.id.fragment_container, _mapFragment, "map");
         fragmentTransaction.commit();
 
-        _viewSwitcher = new ViewSwitcher(this, findViewById(R.id.heart_image),
+        _viewSwitcher = new ViewSwitcher(this, _heartImageView,
                 new ViewSwitcher.IViewSwicherListener() {
 
                     @Override
@@ -182,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements
 
                         _listFragment.setPlaces(_places);
 
-                        _viewSwitcher.playInitialAnimation(findViewById(R.id.heart_image));
+                        _viewSwitcher.playInitialAnimation(_heartImageView);
                     }
                 }, new Response.ErrorListener() {
                     @Override

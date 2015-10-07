@@ -22,6 +22,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        warning 'InvalidPackage'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
 }
 
 dependencies {
@@ -31,5 +39,6 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:7.8.0'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.squareup.moshi:moshi:0.9.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
     compile project(":volley")
 }
