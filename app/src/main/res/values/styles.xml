@@ -8,4 +8,42 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
+    <!-- Abstract styles -->
+
+    <style name="PlaceView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/place_dialog_margin</item>
+    </style>
+
+    <style name="PlaceView.Selectable" parent="PlaceView">
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <!-- Place -->
+
+    <style name="PlaceView.Address" parent="PlaceView.Selectable">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:drawableRight">@drawable/maps_icon</item>
+        <item name="android:drawableEnd">@drawable/maps_icon</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="PlaceView.Address2" parent="PlaceView.Selectable">
+        <item name="android:autoLink">all</item>
+    </style>
+
+    <style name="PlaceView.Helpers" parent="PlaceView">
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="PlaceView.ScrollView" parent="PlaceView">
+        <item name="android:padding">0dp</item>
+        <item name="android:fillViewport">true</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+    </style>
+
+    <style name="PlaceView.Items" parent="PlaceView"/>
+
 </resources>

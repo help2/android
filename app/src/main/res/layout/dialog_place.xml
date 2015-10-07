@@ -10,47 +10,29 @@
 
     <TextView
         android:id="@+id/address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/place_dialog_margin"
-        android:drawableEnd="@drawable/maps_icon"
-        android:drawableRight="@drawable/maps_icon"
-        android:gravity="center_vertical"
+        style="@style/PlaceView.Address"
         tools:background="@android:color/holo_blue_light"
         tools:text="@string/place_item_address1" />
 
     <TextView
         android:id="@+id/address2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/place_dialog_margin"
-        android:layout_marginLeft="@dimen/place_dialog_margin"
-        android:layout_marginRight="@dimen/place_dialog_margin"
-        android:layout_marginTop="@dimen/place_dialog_margin"
-        android:autoLink="all"
+        style="@style/PlaceView.Address2"
         tools:background="@android:color/holo_blue_light"
         tools:text="@string/place_item_address2" />
 
     <TextView
         android:id="@+id/helpers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/place_dialog_margin"
-        android:textStyle="italic"
+        style="@style/PlaceView.Helpers"
         tools:background="@android:color/holo_blue_light"
         tools:text="@string/place_item_helpers" />
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/place_dialog_margin"
-        android:fillViewport="true"
-        android:scrollbars="vertical">
+        style="@style/PlaceView.ScrollView"
+        tools:background="@android:color/holo_red_dark">
 
         <TextView
             android:id="@+id/items"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/PlaceView.Items"
             tools:background="@android:color/holo_blue_light"
             tools:text="@string/place_item_items" />
 
