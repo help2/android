@@ -57,9 +57,8 @@ public class ViewSwitcher extends GestureDetector.SimpleOnGestureListener {
                     return;
                 }
 
-                int activityHeight = _activity.getWindow().getDecorView().getHeight();
-                float targetY = _sliderOnTop ? activityHeight - _slider.getHeight() * 2 :
-                        0;
+                float targetY = _sliderOnTop ? getActivityHeight() - _slider.getHeight() : 0;
+
                 _sliderOnTop = !_sliderOnTop;
 
                 slider.animate().y(targetY).setDuration(1000).setListener(new Animator.AnimatorListener() {
@@ -100,7 +99,6 @@ public class ViewSwitcher extends GestureDetector.SimpleOnGestureListener {
         if (_animState != INITIAL_ANIMATION_STATE.NOT_PLAYED || _activity == null) {
             return;
         }
-
 
         _animState = INITIAL_ANIMATION_STATE.PHASE_1;
         playAnimation(slider);
