@@ -2,8 +2,6 @@ package com.helphelp2.android;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -13,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.Locale;
+import com.helphelp2.android.utils.IntentHelper;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,8 +28,6 @@ public class PlaceDialogFragment extends DialogFragment {
     protected static final String BUNDLE_KEY_HELPERS = "helpers";
     protected static final String BUNDLE_KEY_ITEMS = "items";
     protected static final String BUNDLE_KEY_TITLE = "title";
-
-    protected static final String GEO_INTENT_PATTERN = "geo:0,0?q=%s";
 
     @Bind(R.id.address)
     TextView _addressTextView;
@@ -110,9 +106,7 @@ public class PlaceDialogFragment extends DialogFragment {
         if (TextUtils.isEmpty(addr)) {
             return;
         }
-        String uri = String.format(Locale.ENGLISH, GEO_INTENT_PATTERN, addr);
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-        startActivity(intent);
+        startActivity(IntentHelper.getLookUpAddressIntent(addr));
     }
 
     @Override

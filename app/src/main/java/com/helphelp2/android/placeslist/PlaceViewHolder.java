@@ -1,8 +1,6 @@
 package com.helphelp2.android.placeslist;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -13,8 +11,7 @@ import android.widget.TextView;
 import com.helphelp2.android.R;
 import com.helphelp2.android.models.Address;
 import com.helphelp2.android.models.Place;
-
-import java.util.Locale;
+import com.helphelp2.android.utils.IntentHelper;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -98,9 +95,7 @@ public class PlaceViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void lookUpAddress(@NonNull String address) {
-        String uri = String.format(Locale.ENGLISH, "geo:0,0?q=%s", address);
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-        _context.startActivity(intent);
+        _context.startActivity(IntentHelper.getLookUpAddressIntent(address));
     }
 
 }
