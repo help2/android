@@ -8,8 +8,8 @@ android {
         applicationId "com.helphelp2.android"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 12
-        versionName "1.5.1"
+        versionCode 13
+        versionName "1.5.2"
         // API configuration
         buildConfigField "String", "API_END_POINT", '"https://helphelp2.com"'
         buildConfigField "String", "API_PLACES_READ_PATH", '"/heart/places/"'
