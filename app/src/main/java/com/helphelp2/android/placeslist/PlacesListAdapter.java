@@ -24,7 +24,7 @@ public class PlacesListAdapter extends RecyclerView.Adapter<PlaceViewHolder> {
     public PlaceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View itemView = layoutInflater.inflate(R.layout.row, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.places_list_row, parent, false);
         return new PlaceViewHolder(context, itemView);
     }
 

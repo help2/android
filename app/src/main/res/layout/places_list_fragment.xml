@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:visibility="gone"
         tools:background="@android:color/holo_green_dark"
-        tools:listitem="@layout/row"
+        tools:listitem="@layout/places_list_row"
         tools:visibility="visible" />
 
     <TextView
