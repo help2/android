@@ -21,6 +21,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.helphelp2.android.models.Place;
 import com.helphelp2.android.models.PlacesResponse;
+import com.helphelp2.android.placeslist.PlacesListFragment;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements
 
     ViewSwitcher _viewSwitcher;
     MapsFragment _mapFragment;
-    ListPlacesFragment _listFragment;
+    PlacesListFragment _placesListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements
         }
 
         _mapFragment = new MapsFragment();
-        _listFragment = new ListPlacesFragment();
+        _placesListFragment = new PlacesListFragment();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         //transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
                         if (_mapFragment.isVisible()) {
-                            transaction.replace(R.id.fragment_container, _listFragment);
+                            transaction.replace(R.id.fragment_container, _placesListFragment);
                         } else {
                             transaction.replace(R.id.fragment_container, _mapFragment);
                         }
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements
             buildGoogleApiClient();
         } else {
             _mapFragment.placePins(_places, false);
-            _listFragment.setPlaces(_places);
+            _placesListFragment.setPlaces(_places);
         }
     }
 
@@ -183,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements
                             _mapFragment.placePins(_places, true);
                         }
 
-                        _listFragment.setPlaces(_places);
+                        _placesListFragment.setPlaces(_places);
 
                         _viewSwitcher.playInitialAnimation(_heartImageView);
                     }

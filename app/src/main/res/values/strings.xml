@@ -15,4 +15,8 @@
 
     <string name="infobox_text">Move heart slider up/down to switch between list/map view.\r\n\r\nLong press on heart slider to refresh addressed.\r\n\r\nTo add organizations visit:\r\nhttps://helphelp2.com/admin\r\n\r\nContacts:\r\nRüdiger Trost / Lev Stipakov\r\nHofmannstraße 30\r\n81379 München\r\n+498923043117\r\ninfo@helphelp2.com</string>
 
+    <string name="places_list_empty">
+        No data available. Please try again.
+    </string>
+
 </resources>
